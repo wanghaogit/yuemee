@@ -1,0 +1,54 @@
+.material_div{
+	width:1080px;
+	height:720px;
+	position: fixed;
+	top:50%;
+	margin-top: -360px;
+	left:50%;
+	margin-left: -540px;
+	z-index: 999;
+	border:1px solid #666;
+	background-color: #fff;
+}
+
+.big_img_div{
+	width:720px;
+	height:480px;
+	position: fixed;
+	top:50%;
+	margin-top: -140px;
+	left:50%;
+	margin-left: -360px;
+	z-index: 9999;
+	border:1px solid #666;
+	background-color: #fff;
+}
+.material_div .t_div{
+	width: 100%;
+	height:40px;
+	font-size: 24px;
+	line-height: 40px;
+	text-align: center;
+}
+.material_div .b_div{
+	position: absolute;
+	width: 30px;
+	bottom: 20px;
+	right: 50%;
+	margin-right: -15px;
+}
+.m_content_div li{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.m_content_div ul{
+	float: left;
+}
+.m_checked_menu{
+	background-color: red;
+	color:#fff;
+}
+.default_img{
+	border: 1px solid red;
+}

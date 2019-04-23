@@ -1,0 +1,3 @@
+ALTER TABLE `rebate` ADD COLUMN `owner_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '本条佣金记录的归属人'	AFTER `order_id`;
+ALTER TABLE `rebate` ADD COLUMN `invitor_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '下单时的邀请人'	AFTER `buyer_vip`;
+ALTER TABLE `rebate` ADD COLUMN `invitor_vip` TINYINT  UNSIGNED NOT NULL DEFAULT 0 COMMENT '邀请人的VIP状态'	AFTER `invitor_id`;

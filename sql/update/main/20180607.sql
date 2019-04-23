@@ -1,0 +1,1 @@
+ALTER TABLE `vip` ADD COLUMN `has_gifts` INT NOT NULL DEFAULT 0 COMMENT '是否领取大礼包' AFTER `status`;

@@ -1,0 +1,71 @@
+/**
+ * 品类调整
+ */
+TRUNCATE TABLE `catagory`;
+ALTER TABLE `catagory` DROP COLUMN `supplier_id`;
+ALTER TABLE `catagory` DROP COLUMN `is_private`;
+ALTER TABLE `catagory` DROP COLUMN `gratio_dead`;
+ALTER TABLE `catagory` DROP COLUMN `gratio_warn`;
+ALTER TABLE `catagory` DROP COLUMN `rratio_system`;
+ALTER TABLE `catagory` DROP COLUMN `is_internal`;
+ALTER TABLE `catagory` ADD COLUMN `lv_user` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '普通用户可见' AFTER `is_hidden`;
+ALTER TABLE `catagory` ADD COLUMN `lv_vip` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT 'VIP可见' AFTER `lv_user`;
+ALTER TABLE `catagory` ADD COLUMN `lv_cheif` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '总监可见' AFTER `lv_vip`;
+ALTER TABLE `catagory` ADD COLUMN `lv_director` TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '总经理可见' AFTER `lv_cheif`;
+
+INSERT INTO `catagory` (`id`,`parent_id`,`name`,`create_user`,`create_time`,`create_from`) VALUES
+(1,0,'食品保健',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(2,0,'美妆个护',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(3,0,'母婴玩具',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(4,0,'家居百货',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(5,0,'数码家电',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(6,0,'服饰箱包',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(8,0,'生活服务',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(9,0,'测试区',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1'));
+
+INSERT INTO `catagory` (`id`,`parent_id`,`name`,`create_user`,`create_time`,`create_from`) VALUES
+(101,1,'粮油副食',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(102,1,'营养保健',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(103,1,'酒水饮料',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(104,1,'进口食品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(105,1,'冲调饮品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(106,1,'休食饼干',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(107,1,'生鲜食品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+
+(201,2,'洗发护发',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(202,2,'护肤用品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(203,2,'个护清洁',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(204,2,'香水彩妆',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(205,2,'女性护理',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+
+(301,3,'母婴奶粉',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(302,3,'尿裤湿巾',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(303,3,'辅食营养',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(304,3,'婴儿洗护',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(305,3,'喂养用品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(306,3,'童装童鞋',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(307,3,'妈妈专区',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(308,3,'童车童床',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(309,3,'玩具乐器',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(310,3,'安全座椅',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(311,3,'图书',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+
+(401,4,'家居清洁',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(402,4,'日用家纺',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(403,4,'厨房用具',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(404,4,'餐具水具',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(405,4,'家装家具',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(406,4,'办公用品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(407,4,'汽车用品',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(408,4,'其他日用',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+
+(501,5,'家用电器',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(502,5,'手机数码',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(503,5,'生活电器',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+
+(601,6,'服饰鞋履',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(602,6,'时尚箱包',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(603,6,'运动户外',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1')),
+(604,6,'珠宝轻奢',1,UNIX_TIMESTAMP(),INET_ATON('127.0.0.1'));
+
+UPDATE `catagory` SET is_hidden = 1 WHERE  `id` = 9;

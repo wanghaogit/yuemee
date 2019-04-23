@@ -1,0 +1,9 @@
+.hidelist{
+  width:350px;
+  height:500px;
+  border:1px solid #000;
+  background-color:#fff;
+  position:absolute;
+  top:20%;
+  left:40%;
+}

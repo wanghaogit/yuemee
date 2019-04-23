@@ -1,0 +1,36 @@
+/*
+	成为总监相关存储过程
+*/
+DELIMITER |||
+
+/*
+	测试存储过程
+*/
+DROP PROCEDURE IF EXISTS `test_1` |||
+CREATE PROCEDURE `test_1` (
+
+	OUT ReturnValue	VARCHAR(32),
+	OUT ReturnMessage VARCHAR(1024)
+) LANGUAGE SQL NOT DETERMINISTIC SQL  SECURITY INVOKER CONTAINS SQL READS SQL DATA MODIFIES SQL DATA COMMENT '直升经理'
+Main : BEGIN
+	DECLARE SYSError INT DEFAULT 0;
+	DECLARE SYSEmpty INT DEFAULT 0;
+
+	-- 声明异常处理
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET SYSError = 1;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET SYSEmpty = 1;
+	
+	UPDATE `yuemi_main`.`test` 
+	SET test = 1 ;
+
+	
+	-- 开启事务
+	START TRANSACTION;
+		SELECT 1;
+		IF SYSError = 1 THEN 
+			SELECT 2;
+		END IF;
+	COMMIT;
+	SET ReturnValue = 'OK';
+	SET ReturnMessage = CONCAT(ReturnMessage,'->','完毕');
+END |||

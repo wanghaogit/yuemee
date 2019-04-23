@@ -1,0 +1,26 @@
+server {
+	listen 80;
+	server_name z.f.ziima.cn z.yuemee.com;
+	root /data/web/admin;
+	index index.html index.php;
+	access_log  /data/logs/nginx/admin.log;
+
+	keepalive_timeout       70;
+
+	location / {
+		rewrite ^/m/(\w+)/(\w+)\.do$	/index.php?call=$1.$2;
+		rewrite ^/w/(\w+)/(\w+)\.do$	/work.php?call=$1.$2;
+		rewrite ^/a/(\w+)/(\w+)\.do$	/api.php?call=$1.$2;
+	}
+	location ~ \.php$ {
+			include fastcgi-php.conf;
+	}
+
+	location ~ \.host$ {
+		return 403;
+	}
+
+	location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|js|css)$ {
+		expires      7d;
+	}
+}
